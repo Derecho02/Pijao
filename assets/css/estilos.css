@@ -1,0 +1,131 @@
+body {
+    background-color: #F5F5F5;
+} 
+
+/* Establece el color de fondo para los encabezados */
+header {
+    background-color: #795548;
+}
+
+/* Alinea el texto en la sección "nosotros" y establece la altura de línea */
+.nosotros {
+    text-align: justify;
+    line-height: 2em;
+}
+
+/* Alinea el texto de la descripción de la tarjeta */
+.card-text {
+    text-align: justify;
+}
+
+/* Estilo personalizado para texto justificado con altura de línea */
+.text-justi {
+    text-align: justify;
+    line-height: 2em;
+}
+
+/* Espacios de calidad (quality-sections) */
+.quality-sections {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* Estilo del encabezado h2 dentro de "quality-sections" */
+.quality-sections h2 {
+    text-align: center; 
+    margin-bottom: 20px; 
+}
+
+/* Estilo para párrafos y listas dentro de "quality-sections" */
+.quality-sections p,
+.quality-sections ul {
+    text-align: justify; 
+    line-height: 2; 
+}
+
+/* Estilo para listas no ordenadas dentro de "quality-sections" */
+.quality-sections ul {
+    padding-left: 20px; /* Sangría izquierda para las listas */
+}
+
+/*MargenBaja*/
+.margenBaja{
+    padding-bottom: 40px;
+}
+
+
+.separador {
+    width: 80%; /* Ancho del contenedor */
+    margin: 0 auto; /* Centrar el contenedor */
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #795548; /* Color y grosor de la línea */
+    margin: 0; /* Eliminar el margen del hr */
+}
+
+.footer-margin {
+    margin-top: 20px; 
+    margin-bottom: 10px; 
+}
+
+/* Color cafe para botones ver mas */
+.boton-ver-mas{
+    background-color: #795548;
+    color: white; /* Cambia el color del texto a blanco para mayor contraste */
+    border-color: #795548; /* Cambia el color del borde si es necesario */
+}
+.btn-custom {
+    width: 200px;
+    background-color: #795548 !important;
+    border-color: #795548 !important;
+}
+.btn-custom:hover {
+    background-color: #5d4037 !important; /* Cambia el color al pasar el ratón por encima */
+    border-color: #5d4037 !important;
+}
+
+/*Pie de PAgina*/
+
+footer {
+    padding: 0 75px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-column {
+    flex: 1;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.footer-column p {
+    margin: 5px 0;
+    color: #6e6e6e;
+}
+.icono-red-social {
+    width: 30px; 
+    height: auto; /* La altura se ajustará automáticamente */
+    margin-right: 5x; /* Espacio entre los íconos */
+  }
+/*Termina Pie de Pagina*/
+
+/*Titulos Servicios*/
+.titulo-principal {
+    text-align: center;
+    margin: 40px 4%;
+  }
+  
+  .titulo-principal h2 {
+    font-size: 36px;
+    color: #444; /* Color del título */
+    text-transform: uppercase; /* Poner en mayúsculas */
+    border-bottom: 2px solid #444; /* Línea decorativa debajo del título */
+    padding-bottom: 40px; /* Espacio entre el título y la línea */
+  }
+  /*Termina Titulos Servicios*/
+

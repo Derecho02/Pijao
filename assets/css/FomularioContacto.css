@@ -1,0 +1,55 @@
+/* Estilos para el formulario */
+body {
+  background-color: #F5F5F5 !important;
+} 
+
+.contact-section {
+    max-width: 550px; /* Ancho máximo del formulario */
+    margin: 30px auto; /* Margen superior e inferior */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: center; /* Centrar el contenido */
+  }
+  
+  .contact-section h2 {
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left; /* Alinear etiquetas a la izquierda */
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    width: calc(100% - 20px); /* Ancho del campo de entrada */
+    padding: 8px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  button {
+    display: block;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #795548;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: rgb(202, 202, 13);
+  }
+  
