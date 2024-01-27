@@ -6,8 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $telefono = $_POST['telefono'];
     $comentario = $_POST['comentario'];
 
-    // Aquí deberías realizar la conexión a la base de datos y ejecutar la inserción
-    // Suponiendo que estás utilizando MySQLi:
     $conexion = new mysqli('localhost', 'root', '', 'pijao');
 
     if ($conexion->connect_error) {
@@ -27,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Content-Type: application/json');
     echo json_encode($respuesta);
 } else {
-    // Si no es una solicitud POST, redirigir o manejar de acuerdo a tus necesidades
+
     echo 'Acceso no permitido';
 }
 

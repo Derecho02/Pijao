@@ -19,8 +19,8 @@ body{
 }
 
 .separador {
-    width: 80%; /* Ancho del contenedor */
-    margin: 0 auto; /* Centrar el contenedor */
+    width: 80%;
+    margin: 0 auto;
 }
 hr {
     border: none;

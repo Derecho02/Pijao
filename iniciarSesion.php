@@ -1,14 +1,51 @@
+<?php
+session_start();
+
+include('conexion.php');
+
+$errorMensaje = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $usuario = mysqli_real_escape_string($conexion, $_POST['usuario']);
+    $password = $_POST['password'];
+
+    $verificarUsuario = "SELECT * FROM usuarios WHERE usuario = '$usuario'";
+    $resultado = mysqli_query($conexion, $verificarUsuario);
+
+    if (mysqli_num_rows($resultado) > 0) {
+        $fila = mysqli_fetch_assoc($resultado);
+        if (password_verify($password, $fila['password'])) {
+            $_SESSION['usuario'] = $usuario;
+
+            if ($fila['es_administrador']) {
+                $_SESSION['es_administrador'] = true;
+                header("Location: paginaAdministrador.php");
+            } else {
+                header("Location: index.php");
+            }
+
+            exit();
+        } else {
+            $errorMensaje = "Contraseña incorrecta";
+        }
+    } else {
+        $errorMensaje = "Usuario no encontrado";
+    }
+}
+
+mysqli_close($conexion);
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/estilos.css"/>
-    <link rel="stylesheet" href="assets/css/estilosProducto.css" />
-    <title>prueb</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
-<body>
+<body class="bg-light">
 <header>
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme= "dark">
@@ -26,10 +63,10 @@
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                       <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                        <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="productos.php">Productos</a>
+                        <a class="nav-link" href="Prueb.php">Productos</a>
                       </li>
                       <!-- Desplegable -->
                       <li class="nav-item dropdown">
@@ -48,6 +85,9 @@
                       <li class="nav-item">
                         <a class="nav-link" href="paginas/Contactenos.html">Contáctenos</a>
                       </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="iniciarSesion.php">Iniciar Sesion</a>
+                      </li>
                     </ul>
                     <!-- Por si se quiere agregar el de busqueda
                     <form class="d-flex" role="search">
@@ -58,41 +98,39 @@
                 </div>
               </nav>
         </div>
-    </header>   
+    </header>
 
-    <section class="tituloP">
-      <h1 >PRODUCTOS</h1>
-    </section>
+<div class="container d-flex align-items-center justify-content-center min-vh-100">
+    <div class="card p-4">
+        <h2 class="mb-4 text-center">Iniciar Sesión</h2>
+        <form action="" method="POST">
+            <div class="form-group">
+                <label for="usuario">Usuario:</label>
+                <input type="text" class="form-control" name="usuario" required>
+            </div>
 
-    <div class="separador">
-    <hr>
-  </div>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
 
-    <div class="container">
-	  	<?php 
-		    include("conexion.php");
-			  $query = "SELECT * FROM productos";
-			  $resultado = $conexion->query($query);
-			    while($row = $resultado->fetch_assoc()){
-				  ?> 
-        
-         <div class=col-md-4>
-				  <div class="card">
-					  <img src="data:image/jpg;base64, <?php echo base64_encode($row ['imagen']); ?>">
-					  <h4><?php echo $row ['nombre']; ?> </h4>
-					  <p> <?php echo $row ['descripcion'];?> </p>
-            <p> <?php echo $row ['precio'];?> </p>
-					  <a href="#">comprar</a>
-				  </div>
-        </div> 
-        
-				<?php 
-			}
-			?> 
+            <?php if (!empty($errorMensaje)) { ?>
+                <div class="alert alert-danger" role="alert"><?php echo $errorMensaje; ?></div>
+            <?php } ?>
+            <br>
+        <div Class="text-center">
+            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+        </form>
+        </div>       
+        <p class="mt-3">¿No tienes una cuenta? <a href="registro.html">Regístrate aquí</a></p>
+    </div>
+</div>
+
+<div class="separador my-3">
+      <hr>
     </div>
 
-     <!-- Pie de Pagina  -->
-   <footer class="text-center text-black footer-margin">
+<footer class="text-center text-black footer-margin">
     <section>
       <div class="footer-container">
         <div class="footer-column">
@@ -124,5 +162,8 @@
         <p>Copyright © 2023 : : Ingenieria y Minerales El Pijao S.A.S</p>
    </footer>
 
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

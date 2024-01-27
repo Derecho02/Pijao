@@ -109,8 +109,8 @@ footer {
 }
 .icono-red-social {
     width: 30px; 
-    height: auto; /* La altura se ajustará automáticamente */
-    margin-right: 5x; /* Espacio entre los íconos */
+    height: auto; 
+    margin-right: 5x;
   }
 /*Termina Pie de Pagina*/
 
@@ -128,4 +128,15 @@ footer {
     padding-bottom: 40px; /* Espacio entre el título y la línea */
   }
   /*Termina Titulos Servicios*/
+
+  .whatsapp-button {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border: none;
+}
+.whatsapp-icon {
+    width: 75px;
+    margin-right: 5px;
+}
 
